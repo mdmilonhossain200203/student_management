@@ -14,6 +14,7 @@ class TeacherController extends Controller
     public function index()
     {
         //
+        return view('/teacher.create');
     }
 
     /**
@@ -29,7 +30,11 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        //
+       
+
+        Teacher::create([
+            'teachersName' => $request->teacherName,
+        ]);
     }
 
     /**

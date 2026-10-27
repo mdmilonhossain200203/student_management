@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->integer('price');
-            $table->time('duration');
             $table->unsignedInteger('duration')->default(1);
             $table->string('thumbnail')->nullable();
             $table->string('coursesTeacher')->nullable();

@@ -17,7 +17,7 @@
     
     <main>
 
-        <p class="text-info">location</p>
+  
 
         <section>
             @yield('contentSection')

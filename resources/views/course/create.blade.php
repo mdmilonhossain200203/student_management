@@ -20,11 +20,11 @@
 
                 <div class="form-field">
                     <label for="" class="form-label">courese title</label>
-                    <input type="text" name="coureseTitle"  class="form-control" id=""> </input>
+                    <input type="text" name="courseTitle"  class="form-control" id=""> </input>
                 </div>
 
                 <div class="form-field">
-                    <label for="" class="form-label">courese price</label>
+                    <label for="" class="form-label">courese description</label>
                     <textarea type='text' name="description" class="form-control" id=""> </textarea>
                 </div>
                   
@@ -40,8 +40,13 @@
                 <div class="form-field">
                     <label for="" class="form-label">courese teacher</label>
                     <br/>
-                    <select name="" id="" class="p-1">
-                        <option value="">teacher</option>
+                    <select name="teacher" id="" class="p-1">
+                        @foreach ($teacher as $teach)
+                        <option value="{{ $teach->id }}">
+                            {{ $teach->teachersName }}
+                        </option>
+                    @endforeach
+                        
                     </select>
                     
                 </div>
@@ -50,7 +55,7 @@
 
                 <div class=" mb-2 ">
                     <label for="" class="form-label ">courese status</label> <br/>
-                    <select name="" id="" class="p-2">
+                    <select name="status" id="" class="p-2">
                         <option value="active">active</option>
                         <option value="inactive">inactive</option>
                     </select>

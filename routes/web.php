@@ -13,8 +13,10 @@ Route::get('/', function () {
 Route::get('/data',[RoleController::class,'index']);
 
 Route::get('/teachers',[TeacherController::class,'index']);
+Route::post('/teacher/store',[TeacherController::class,'store']);
 
 Route::get('/course',[CourseController::class, 'index']);
+Route::get('/course/create',[CourseController::class, 'create']);
 Route::post('/course/store',[CourseController::class,'store']);
 
 

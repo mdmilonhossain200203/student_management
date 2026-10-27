@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Course;
+use App\Models\Teacher;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -14,7 +16,9 @@ class CourseController extends Controller
     public function index()
     {
         //
-        return view('course.create');
+        
+       $courses= Course::all();
+        return view('course.index', compact('courses'));
     }
 
     /**
@@ -23,6 +27,10 @@ class CourseController extends Controller
     public function create()
     {
         //
+        $teacher= Teacher::all();
+        return view('course.create', compact('teacher'));
+    
+        
     }
 
     /**
@@ -30,10 +38,52 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
-   
-        dd($request->all());
-        
+
+
+
+         $courses = Course::with('teacher')->get();
+        // dd($courses);
+
+    //    foreach ($courses as $course) {
+    //      foreach ($course->teacher as $teacher) {
+    //         dump($teacher->teachersName);
+    //             // dump($course->teacher->techersName);
+    //       }
+    //    }
+
+
+
+        //     foreach ($course->teacher as $teacher)
+        //         <p>{{ $teacher->teachersName }}</p>
+        //     endforeach
+        //   endforeach
+
+
+
+        // Course::create([
+
+        //     'title'=> $request->coureseTitle,
+        //     'slug'=> strtolower($request->coureseTitle),
+        //     'description'=> $request->description,
+        //     'price'=> $request->price, 
+        //     'duration'=> $request->duration,
+        //     'thumbnail'=> $request->thumbnail, 
+        //     'coursesTeacher'=>1 ,
+        //     'status'=> $request->status,
+
+        // ]);
+
+        $course = Course::create([
+            'title' => $request->courseTitle,
+            'slug' => Str::slug($request->courseTitle),
+            'description' => $request->description,
+            'price' => $request->price,
+            'duration' => $request->duration,
+            'thumbnail' => $request->thumbnail,
+            'status' => $request->status,
+        ]);
+
+        $course->teacher()->attach($request->teacher);
     }
 
     /**
