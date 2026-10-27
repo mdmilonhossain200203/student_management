@@ -1,14 +1,22 @@
+
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="h4 mb-0 text-dark">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+    <div class="container py-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">Welcome to Dashboard</h3>
+                <p class="card-text">
+                    You are successfully logged in!
+                </p>
+
+                <a href="#" class="btn btn-primary">
+                    Get Started
+                </a>
             </div>
         </div>
     </div>

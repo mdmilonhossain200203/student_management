@@ -21,11 +21,8 @@ return new class extends Migration
             $table->time('duration');
             $table->unsignedInteger('duration')->default(1);
             $table->string('thumbnail')->nullable();
-            $table->integer('teacher_id')->nullable();
+            $table->string('coursesTeacher')->nullable();
             $table->string('status')->nullable();
-
-            
-
             $table->timestamps();
 
         });
