@@ -18,4 +18,6 @@ class Teacher extends Model
     public function course(){
         return $this->belongsToMany(Course::class,'course_teachers') ;
     }
+  
+
 }
