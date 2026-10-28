@@ -1,3 +1,5 @@
 1. database fresh - korle role seed korete hove
 
 2. aising (26)
+
+observer 

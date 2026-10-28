@@ -12,6 +12,7 @@ class Enrollment extends Model
     use HasFactory;
     //
 
+    protected $fillable = ['user_id','course_id','payment_status'];
 
     public function user() {
         return $this->belongsTo(User::class);

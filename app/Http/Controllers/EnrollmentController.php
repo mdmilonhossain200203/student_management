@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enrollment;
 use App\Http\Requests\StoreEnrollmentRequest;
 use App\Http\Requests\UpdateEnrollmentRequest;
+use App\Models\Course;
+use App\Models\Enrollment;
+use App\Models\User;
 
 class EnrollmentController extends Controller
 {
@@ -15,8 +17,15 @@ class EnrollmentController extends Controller
     {
         //
 
-        $Enrollment= Enrollment::with('user','course')->get();
-       // dd($Enrollment);
+        // $users = User::where('id', '1')->get();
+        // dd($users);
+
+    //    $courses = Course::where('id','1')->first();
+    //    dd($courses);
+
+         $Enrollment= Enrollment::with('user','course')->get();
+         dd($Enrollment);
+         return view('enrollment.index');
 
     }
 
@@ -34,6 +43,15 @@ class EnrollmentController extends Controller
     public function store(StoreEnrollmentRequest $request)
     {
         //
+
+        Enrollment::create([
+            
+            'user_id'=> 1,
+            'course_id'=>1,
+            'payment_status'=>'defult'
+
+        ]);
+        
     }
 
     /**

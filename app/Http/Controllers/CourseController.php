@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
@@ -15,9 +16,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
         
-       $courses= Course::all();
+        //$student = User::where('role_id','3')->get();
+        //dd($student);
+        $courses = Course::all();
         return view('course.index', compact('courses'));
     }
 
@@ -51,28 +53,7 @@ class CourseController extends Controller
     //       }
     //    }
 
-
-
-        //     foreach ($course->teacher as $teacher)
-        //         <p>{{ $teacher->teachersName }}</p>
-        //     endforeach
-        //   endforeach
-
-
-
-        // Course::create([
-
-        //     'title'=> $request->coureseTitle,
-        //     'slug'=> strtolower($request->coureseTitle),
-        //     'description'=> $request->description,
-        //     'price'=> $request->price, 
-        //     'duration'=> $request->duration,
-        //     'thumbnail'=> $request->thumbnail, 
-        //     'coursesTeacher'=>1 ,
-        //     'status'=> $request->status,
-
-        // ]);
-
+   
         $course = Course::create([
             'title' => $request->courseTitle,
             'slug' => Str::slug($request->courseTitle),
@@ -84,14 +65,23 @@ class CourseController extends Controller
         ]);
 
         $course->teacher()->attach($request->teacher);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show(Course $course, $id)
     {
-        //
+       $course= Course::with('teacher')->find($id);
+       
+    //    if ($course) {
+    //     foreach ($course->teacher as $a) {
+    //         echo $a->teachersName ;
+    //     }}
+        
+        return view('course.show',compact('course'));
+
     }
 
     /**

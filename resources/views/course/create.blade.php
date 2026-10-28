@@ -30,11 +30,12 @@
                   
                 <div class="form-field">
                     <label for="" class="form-label">courese duration</label>
-                    <input type="number" name="price" class="form-control" id=""> </input>
+                    <input  name="duration" class="form-control" id=""> </input>
                 </div>
+
                 <div class="form-field">
                     <label for="" class="form-label">courese price</label>
-                    <input name="duration" class="form-control" id=""> </input>
+                    <input type="number" name="price" class="form-control" id=""> </input>
                 </div>
 
                 <div class="form-field">
