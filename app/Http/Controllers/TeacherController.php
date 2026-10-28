@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use App\Models\User;
 
 class TeacherController extends Controller
 {
@@ -13,8 +14,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
-        return view('/teacher.create');
+        $teachers=Teacher::with('course')->get();
+        $user =User::all();
+        // dd($teachers);
+        // dd($user);
+        return view('/teacher.index',compact('teachers'));
     }
 
     /**
@@ -23,6 +27,10 @@ class TeacherController extends Controller
     public function create()
     {
         //
+
+        return view('/teacher.create');
+
+        
     }
 
     /**
