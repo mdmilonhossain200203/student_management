@@ -15,7 +15,7 @@
                 <!-- title, description, price, duration, assigned teacher,
                 thumbnail image, and status (active/inactive) -->
             </p>
-            <form class="form"  action="{{ url('teacher/store') }}" method='POST'>
+            {{-- <form class="form"  action="{{ url('teacher/store') }}" method='POST'>
                 @csrf
 
                 <div class="form-field">
@@ -26,7 +26,7 @@
               
               <button type="submit" class="btn btn-danger my-2">submit</button>
 
-            </form>
+            </form> --}}
         </div>
         <div class="col-md-2 col-lg-2"> </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,10 +13,10 @@ class Enrollment extends Model
     use HasFactory;
     //
 
-    protected $fillable = ['user_id','course_id','payment_status'];
+    protected $fillable = ['course_id','payment_status'];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function studentUser() {
+        return $this->belongsToMany(User::class,'enrollment_student');
     }
 
     public function course(){

@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Models\Teacher;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
@@ -16,7 +18,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        
+
         //$student = User::where('role_id','3')->get();
         //dd($student);
         $courses = Course::all();
@@ -29,13 +31,11 @@ class CourseController extends Controller
     public function create()
     {
         //
-        $teacher= Teacher::all();
-        $users= User::where('role_id','2')->get();
+        // $teacher= Teacher::all();
+        $users = User::where('role_id', '2')->get();
 
-       // dd($users);
-        return view('course.create', compact('teacher','users'));
-    
-        
+        // dd($users);
+        return view('course.create', compact('users'));
     }
 
     /**
@@ -45,18 +45,11 @@ class CourseController extends Controller
     {
 
 
-
         // $courses = Course::with('teacher',)->get();
         // dd($courses);
 
-    //    foreach ($courses as $course) {
-    //      foreach ($course->teacher as $teacher) {
-    //         dump($teacher->teachersName);
-    //             // dump($course->teacher->techersName);
-    //       }
-    //    }
 
-   //dd($request->teacher);
+        //dd($request->teacher);
 
         $course = Course::create([
             'title' => $request->courseTitle,
@@ -68,8 +61,10 @@ class CourseController extends Controller
             'status' => $request->status,
         ]);
 
-       // $course->teacher()->attach($request->teacher);
+        // $userId =  Auth::user()->id;
+       
         $course->user()->attach($request->teacher);
+        // $course->userStudent()->attach($userId);
 
     }
 
@@ -78,15 +73,9 @@ class CourseController extends Controller
      */
     public function show(Course $course, $id)
     {
-       $course= Course::with('teacher')->find($id);
-       
-    //    if ($course) {
-    //     foreach ($course->teacher as $a) {
-    //         echo $a->teachersName ;
-    //     }}
-        
-        return view('course.show',compact('course'));
+        $course = Course::with('user')->find($id);
 
+        return view('course.show', compact('course'));
     }
 
     /**

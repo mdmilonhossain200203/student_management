@@ -28,8 +28,8 @@
                         <td>{{ $course->duration }} </td>
                         <td>{{ $course->price }} </td>
                         <td>
-                            @foreach ($course->teacher as $teacher )
-                                {{ $teacher->teachersName }}
+                            @foreach ($course->user as $teacher )
+                                {{ $teacher->name }}
                             @endforeach
                         </td>
                         <td>{{ $course->status }}</td>
@@ -38,14 +38,19 @@
                           
                             @if(Auth::user()?->role_id == 3)
                              {{-- {{ Auth::user()->name }} --}}
+
                              <a class="mx-2" href="{{ url('/course/show',$course->id) }}">enroll course</a>
-                            @else
+                             
+                             <a class="mx-2" href="">edit</a>
+                             <a class="mx-2" href="">delete</a>
+                           
+                             @else
 
 
                                                         
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Launch demo modal
+                                Enroll now
                             </button>
                             
                             <!-- Modal -->
@@ -67,13 +72,10 @@
                             </div>
                             
 
-
                             {{-- <a class="mx-2" href="{{ url('/enrollment') }}">enroll course</a> --}}
                             @endif
                            
 
-                            <a class="mx-2" href="">edit</a>
-                            <a class="mx-2" href="">delete</a>
                         </th>
                     </tr>
                     @endforeach
@@ -83,7 +85,6 @@
            
         </div>
         
-
 
     </div>
 </div>

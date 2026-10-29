@@ -3,6 +3,10 @@
 2. aising (26)
 
 ->course_teacher unesesery relation,
+-course_user migration working as course_teacher
 
-observer ,
+-deleteable  migration:
+2026_10_27_093258_create_teachers_table
+2026_10_27_104659_create_course_teachers_table
+2026_10_29_121800_create_course_student_table
 

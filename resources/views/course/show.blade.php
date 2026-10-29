@@ -26,18 +26,20 @@
           <p>duration:{{ $course->duration }}Day </p>
           <p>status:{{ $course->status }} </p>
 
-         
 
-          @foreach ($course->teacher as $teach)
-          <p>{{ $teach->teachersName }}</p>
+          @foreach ($course->user as $teacher)
+          <p>{{ $teacher->name }}</p>
           @endforeach
 
-          {{-- <p>teacher:{{ $course->teacher->coursesTeacher?? 'No teacher assigned' }} </p> --}}
+         
 
           <form action="{{ url('enrollment/store') }}">
             @csrf
-
-            <button class="btn btn-primary"> enroll compled now</button>
+            <label for="">student id</label>
+            {{-- <input type="text" value="{{ \Auth::user()->name}}"> --}}
+            
+            <input name="studentId" type="text" value="{{ $course->id }}"  >
+            <button class="btn btn-primary"> enroll now</button>
           </form>
 
         </div>

@@ -58,9 +58,9 @@
                     <br/>
                     <select name="teacher" id="" class="p-1">
 
-                    @foreach ($users as $user)
-                        <option value="{{ $user->id }}">
-                            {{ $user->name }}
+                    @foreach ($users as $teacher)
+                        <option value="{{ $teacher->id }}">
+                            {{ $teacher->name }}
                         </option>
                     @endforeach 
 
@@ -68,7 +68,7 @@
                     </select>
                     
                 </div>
-              
+                
 
                 <div class=" mb-2 ">
                     <label for="" class="form-label ">courese status</label> <br/>
@@ -77,6 +77,12 @@
                         <option value="inactive">inactive</option>
                     </select>
                 </div>
+
+                {{-- <div class=" mb-2 ">
+                    <input type="text" value="{{ Auth::user()->id }}" name="" id="">
+                </div> --}}
+
+
                 
                 <div class="form-field">
                     <label for="" class="form-label"> thumbnail image</label>

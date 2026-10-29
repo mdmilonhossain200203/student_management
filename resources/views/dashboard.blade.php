@@ -32,7 +32,7 @@
             <div class="col-md-4 col-lg-4 ">
                 <div class="card p-5 border-0 shadow-sm">
                     <div>
-                        <h4 class="h5 fw-bolder text-uppercase">   see all user  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::count() }} </span></h4>
+                        <h4 class="h5 fw-bolder text-uppercase">    all user  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::count() }} </span></h4>
 
                         <div class="flex justify-content-start">
                             <a href="" class="m-2">user list</a>
@@ -43,10 +43,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 col-lg-4 ">
                 <div class="card p-5 border-0 shadow-sm">
                     <div>
-                        <h4 class="h5 fw-bolder text-uppercase">   see all student  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::whereHas('role', function ($query) {
+                        <h4 class="h5 fw-bolder text-uppercase">    all student  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::whereHas('role', function ($query) {
                             $query->where('id', 3);
                         })->count() }} </span></h4>
 
@@ -59,10 +60,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 col-lg-4 ">
                 <div class="card p-5 border-0 shadow-sm">
                     <div>
-                        <h4 class="h5 fw-bolder text-uppercase">   see all teacher  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::whereHas('role', function ($query) {
+                        <h4 class="h5 fw-bolder text-uppercase">    all teacher  <span class="fw-bolder badge text-primary"> {{ \App\Models\User::whereHas('role', function ($query) {
                             $query->where('id', 2);
                         })->count() }} </span></h4> 
 
@@ -75,76 +77,23 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 col-lg-4 ">
                 <div class="card p-5 border-0 shadow-sm">
                     <div>
-                        <h4 class="h5 fw-bolder text-uppercase">see all techer list <span class="fw-bolder badge text-primary">20</span></h4>
+                        <h4 class="h5 fw-bolder text-uppercase">    all course  <span class="fw-bolder badge text-primary"> {{ \App\Models\Course::count() }} </span></h4> 
 
                         <div class="flex justify-content-start">
-                            <a href="" class="m-2">view list</a>
-                            <a href="" class="m-2">add new teacher
+                            <a href="" class="m-2">course list</a>
+                            <a href="" class="m-2">add new course
                             </a>
                         </div>
                         
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 ">
-                <div class="card p-5 border-0 shadow-sm">
-                    <div>
-                        <h4 class="h5 fw-bolder text-uppercase">see all techer list <span class="fw-bolder badge text-primary">20</span></h4>
-
-                        <div class="flex justify-content-start">
-                            <a href="" class="m-2">view list</a>
-                            <a href="" class="m-2">add new teacher
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 ">
-                <div class="card p-5 border-0 shadow-sm">
-                    <div>
-                        <h4 class="h5 fw-bolder text-uppercase">see all techer list <span class="fw-bolder badge text-primary">20</span></h4>
-
-                        <div class="flex justify-content-start">
-                            <a href="" class="m-2">view list</a>
-                            <a href="" class="m-2">add new teacher
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 ">
-                <div class="card p-5 border-0 shadow-sm">
-                    <div>
-                        <h4 class="h5 fw-bolder text-uppercase">see all techer list <span class="fw-bolder badge text-primary">20</span></h4>
-
-                        <div class="flex justify-content-start">
-                            <a href="" class="m-2">view list</a>
-                            <a href="" class="m-2">add new teacher
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 ">
-                <div class="card p-5 border-0 shadow-sm">
-                    <div>
-                        <h4 class="h5 fw-bolder text-uppercase">see all techer list <span class="fw-bolder badge text-primary">20</span></h4>
-
-                        <div class="flex justify-content-start">
-                            <a href="" class="m-2">view list</a>
-                            <a href="" class="m-2">add new teacher
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            
+           
             
 
             

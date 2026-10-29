@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,11 @@ Route::get('/course/create',[CourseController::class,'create']);
 Route::post('/course/store',[CourseController::class,'store']);
 Route::get('/course/show/{id}',[CourseController::class,'show']);
 
-
 Route::get('/enrollment',[EnrollmentController::class,'index']);
 Route::get('/enrollment/create',[EnrollmentController::class,'create']);
 Route::get('/enrollment/store',[EnrollmentController::class,'store']);
+
+Route::get('/student',[StudentController::class,'index']);
 
 
 
