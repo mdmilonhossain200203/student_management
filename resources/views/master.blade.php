@@ -19,7 +19,7 @@
     <main>
 
   
-
+      {{-- dynamic content  --}}
         <section>
             @yield('contentSection')
         </section>

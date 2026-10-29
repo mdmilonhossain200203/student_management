@@ -14,11 +14,13 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers=Teacher::with('course')->get();
-        $user =User::all();
-        // dd($teachers);
-        // dd($user);
-        return view('/teacher.index',compact('teachers'));
+       // $teachers=Teacher::with('course')->get();
+       // dd($teachers);
+
+        $users =User::with('course')->where('role_id','2')->get();
+       // dd($users);
+
+        return view('/teacher.index',compact('users'));
     }
 
     /**

@@ -30,7 +30,10 @@ class CourseController extends Controller
     {
         //
         $teacher= Teacher::all();
-        return view('course.create', compact('teacher'));
+        $users= User::where('role_id','2')->get();
+
+       // dd($users);
+        return view('course.create', compact('teacher','users'));
     
         
     }
@@ -43,7 +46,7 @@ class CourseController extends Controller
 
 
 
-         $courses = Course::with('teacher')->get();
+        // $courses = Course::with('teacher',)->get();
         // dd($courses);
 
     //    foreach ($courses as $course) {
@@ -53,7 +56,8 @@ class CourseController extends Controller
     //       }
     //    }
 
-   
+   //dd($request->teacher);
+
         $course = Course::create([
             'title' => $request->courseTitle,
             'slug' => Str::slug($request->courseTitle),
@@ -64,7 +68,8 @@ class CourseController extends Controller
             'status' => $request->status,
         ]);
 
-        $course->teacher()->attach($request->teacher);
+       // $course->teacher()->attach($request->teacher);
+        $course->user()->attach($request->teacher);
 
     }
 

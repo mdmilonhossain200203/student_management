@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
 
-        
+
         <div class="col-md-2 col-lg-2 text-info"> </div>
 
         <div class="col-md-8 col-lg-8">
@@ -38,7 +38,8 @@
                     <input type="number" name="price" class="form-control" id=""> </input>
                 </div>
 
-                <div class="form-field">
+                
+                {{-- <div class="form-field">
                     <label for="" class="form-label">courese teacher</label>
                     <br/>
                     <select name="teacher" id="" class="p-1">
@@ -49,10 +50,25 @@
                     @endforeach
                         
                     </select>
+                </div> --}}
+
+                {{-- {{ dd($users }} --}}
+                <div class="form-field">
+                    <label for="" class="form-label">courese teacher</label>
+                    <br/>
+                    <select name="teacher" id="" class="p-1">
+
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">
+                            {{ $user->name }}
+                        </option>
+                    @endforeach 
+
+                        
+                    </select>
                     
                 </div>
-
-               
+              
 
                 <div class=" mb-2 ">
                     <label for="" class="form-label ">courese status</label> <br/>

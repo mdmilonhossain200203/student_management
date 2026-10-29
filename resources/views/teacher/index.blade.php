@@ -14,16 +14,16 @@
                 <thead class="bg-success text-white">
                     <th>teacher name</th>
                     <th>course name</th>
-                    <th>price</th>
                     <th>duration</th>                
+                    <th>price</th>
                     <th>action</th>
 
                   </thead>
                   <tbody>
-                    @foreach ($teachers as $teacher )
+                    @foreach ($users as $teacher )
                     <tr class="table-active">
 
-                        <td>{{ $teacher->teachersName }}</td>
+                        <td>{{ $teacher->name }}</td>
                    
                         <td> 
                             <ul class="list-item-group">
@@ -39,7 +39,7 @@
                              
                             @foreach ($teacher->course as $course )
                                 
-                            <li class="list-unstyled"> {{ $course->duration }}</li> 
+                            <li class="list-unstyled"> {{ $course->duration }} Day</li> 
                             @endforeach
                           
                         </td>
@@ -48,7 +48,7 @@
                             
                             @foreach ($teacher->course as $course )
                                 
-                            <li class="list-unstyled"> {{ $course->price }} Day</li> 
+                            <li class="list-unstyled"> {{ $course->price }} Tk</li> 
                             @endforeach
                         </td>
 
