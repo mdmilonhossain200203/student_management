@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('enrollment_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+
+            $table->unique(['enrollment_id', 'user_id']);
+
         });
     }
 

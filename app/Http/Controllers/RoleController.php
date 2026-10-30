@@ -14,8 +14,8 @@ class RoleController extends Controller
     public function index()
     {
         //
-        $data= User::with('role')->get();
-      //  dd($data);
+        $data = User::with('role')->get();
+        //  dd($data);
     }
 
     /**

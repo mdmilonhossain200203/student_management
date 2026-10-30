@@ -14,13 +14,13 @@ class TeacherController extends Controller
      */
     public function index()
     {
-       // $teachers=Teacher::with('course')->get();
-       // dd($teachers);
+        // $teachers=Teacher::with('course')->get();
+        // dd($teachers);
 
-        $users =User::with('course')->where('role_id','2')->get();
-       // dd($users);
+        $users = User::with('course')->where('role_id', '2')->get();
+        // dd($users);
 
-        return view('/teacher.index',compact('users'));
+        return view('customview/teacher.index', compact('users'));
     }
 
     /**
@@ -31,8 +31,6 @@ class TeacherController extends Controller
         //
 
         return view('/teacher.create');
-
-        
     }
 
     /**
@@ -40,7 +38,7 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-       
+
 
         Teacher::create([
             'teachersName' => $request->teacherName,

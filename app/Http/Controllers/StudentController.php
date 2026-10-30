@@ -14,8 +14,20 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students= User::with('enrollmet')->get();
-        dd($students);
+        $students = User::with('enrollment')->where('role_id','3')->get();
+
+        // dd($students->name);
+
+        // foreach($students as $stuedent){
+        //    // dd($stuedent->name);
+        //     foreach($stuedent->enrollmet as $enrollment){
+        //         dd($enrollment);
+        //         dd($enrollment->id);
+        //     }
+        // }
+
+
+        return view('customview/student.index',compact('students'));
     }
 
     /**

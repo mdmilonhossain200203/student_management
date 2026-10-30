@@ -15,17 +15,16 @@ class EnrollmentController extends Controller
      */
     public function index()
     {
-        //
 
         // $users = User::where('id', '1')->get();
         // dd($users);
 
-        //    $courses = Course::where('id','1')->first();
-        //    dd($courses);
+        //  $courses = Course::where('id','1')->first();
+        //  dd($courses);
 
         $Enrollment = Enrollment::with('user', 'course')->get();
         dd($Enrollment);
-        return view('enrollment.index');
+        return view('customview/enrollment.index');
     }
 
     /**
@@ -41,25 +40,19 @@ class EnrollmentController extends Controller
      */
     public function store(StoreEnrollmentRequest $request)
     {
-        //dd($request->studentId);
 
-        $Enrollment = Enrollment::create([
+        // dd($request->studentId);
 
-            'course_id' => 1,
-            'payment_status' => 'defult'
+        // $Enrollment->studentUser()->attach($request->studentId);
 
+
+        $enrollment = Enrollment::create([
+
+            'course_id' => $request->courseId,
+            'payment_status' => 'default',
         ]);
 
-        // $Enrollment->studentUser()->attach($request->studentId); >syncWithoutDetaching([ $request->studentId])
-
-        $Enrollment->studentUser()->syncWithoutDetaching([$request->student]);
-
-        if ($Enrollment->studentUser()->syncWithoutDetaching([ $request->studentId])) {
-            dd("alrey enroled this course");
-            return back()->with('error', 'Student is already enrolled in this course.');
-        }
-
-        $Enrollment->studentUser()->attach($request->studentId);
+        $enrollment->studentUser()->syncWithoutDetaching($request->studentId);
     }
 
     /**

@@ -5,6 +5,12 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    
+    {{-- <x-slot name="milon">
+        <h2 class="h4 mb-0 text-dark">
+            i am milon hossain
+        </h2>
+    </x-slot> --}}
 
     <div class="container py-5">
 

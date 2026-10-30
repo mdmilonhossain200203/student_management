@@ -42,9 +42,23 @@
             <header class="bg-white shadow-sm">
                 <div class="container py-4">
                     {{ $header }}
+
+                   
                 </div>
             </header>
         @endif
+
+        
+        <!-- Page Heading -->
+       
+            <header class="bg-white shadow-sm">
+                <div class="container py-4">
+                
+
+                    {{ $milon }}
+                </div>
+            </header>
+      
 
         <!-- Page Content -->
         <main class="py-4">

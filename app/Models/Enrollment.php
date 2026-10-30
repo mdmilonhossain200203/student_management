@@ -13,13 +13,15 @@ class Enrollment extends Model
     use HasFactory;
     //
 
-    protected $fillable = ['course_id','payment_status'];
+    protected $fillable = ['course_id', 'payment_status'];
 
-    public function studentUser() {
-        return $this->belongsToMany(User::class,'enrollment_student');
+    public function studentUser()
+    {
+        return $this->belongsToMany(User::class, 'enrollment_student','enrollment_id','user_id');
     }
 
-    public function course(){
+    public function course()
+    {
         return $this->belongsTo(Course::class);
     }
 }

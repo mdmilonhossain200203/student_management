@@ -1,4 +1,4 @@
-@extends('./master')
+@extends('./customview/master')
 
 @section("pageTitle", "create")
 

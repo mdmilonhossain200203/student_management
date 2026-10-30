@@ -21,11 +21,11 @@ Route::post('/teacher/store',[TeacherController::class,'store']);
 Route::get('/course',[CourseController::class,'index']);
 Route::get('/course/create',[CourseController::class,'create']);
 Route::post('/course/store',[CourseController::class,'store']);
-Route::get('/course/show/{id}',[CourseController::class,'show']);
+Route::get('/course/show/{slug}',[CourseController::class,'show']);
 
 Route::get('/enrollment',[EnrollmentController::class,'index']);
 Route::get('/enrollment/create',[EnrollmentController::class,'create']);
-Route::get('/enrollment/store',[EnrollmentController::class,'store']);
+Route::post('/enrollment/store',[EnrollmentController::class,'store']);
 
 Route::get('/student',[StudentController::class,'index']);
 

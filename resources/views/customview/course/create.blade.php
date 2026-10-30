@@ -1,4 +1,4 @@
-@extends('./master')
+@extends('./customview/master')
 
 @section("pageTitle", "create")
 
@@ -30,7 +30,7 @@
                   
                 <div class="form-field">
                     <label for="" class="form-label">courese duration</label>
-                    <input  name="duration" class="form-control" id=""> </input>
+                    <input value="" name="duration" class="form-control" id=""> </input>
                 </div>
 
                 <div class="form-field">
@@ -39,18 +39,6 @@
                 </div>
 
                 
-                {{-- <div class="form-field">
-                    <label for="" class="form-label">courese teacher</label>
-                    <br/>
-                    <select name="teacher" id="" class="p-1">
-                        @foreach ($teacher as $teach)
-                        <option value="{{ $teach->id }}">
-                            {{ $teach->teachersName }}
-                        </option>
-                    @endforeach
-                        
-                    </select>
-                </div> --}}
 
                 {{-- {{ dd($users }} --}}
                 <div class="form-field">
@@ -58,13 +46,12 @@
                     <br/>
                     <select name="teacher" id="" class="p-1">
 
-                    @foreach ($users as $teacher)
-                        <option value="{{ $teacher->id }}">
-                            {{ $teacher->name }}
-                        </option>
-                    @endforeach 
+                        @foreach ($users as $teacher)
+                            <option value="{{ $teacher->id }}">
+                                {{ $teacher->name }}
+                            </option>
+                        @endforeach 
 
-                        
                     </select>
                     
                 </div>
@@ -78,12 +65,7 @@
                     </select>
                 </div>
 
-                {{-- <div class=" mb-2 ">
-                    <input type="text" value="{{ Auth::user()->id }}" name="" id="">
-                </div> --}}
-
-
-                
+            
                 <div class="form-field">
                     <label for="" class="form-label"> thumbnail image</label>
                     <input name="thumbnail" type="file" class="form-control" id=""> </input>

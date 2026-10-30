@@ -22,7 +22,8 @@ class CourseController extends Controller
         //$student = User::where('role_id','3')->get();
         //dd($student);
         $courses = Course::all();
-        return view('course.index', compact('courses'));
+        // return view('course.index', compact('courses'));
+        return view('customview/course.index', compact('courses'));
     }
 
     /**
@@ -35,7 +36,7 @@ class CourseController extends Controller
         $users = User::where('role_id', '2')->get();
 
         // dd($users);
-        return view('course.create', compact('users'));
+        return view('customview/course.create', compact('users'));
     }
 
     /**
@@ -62,7 +63,7 @@ class CourseController extends Controller
         ]);
 
         // $userId =  Auth::user()->id;
-       
+
         $course->user()->attach($request->teacher);
         // $course->userStudent()->attach($userId);
 
@@ -71,11 +72,12 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course, $id)
+    public function show(Course $course, $slug)
     {
-        $course = Course::with('user')->find($id);
 
-        return view('course.show', compact('course'));
+        $course = Course::with('user')->where('slug', $slug)->firstOrFail();
+
+        return view('customview/course.show', compact('course'));
     }
 
     /**

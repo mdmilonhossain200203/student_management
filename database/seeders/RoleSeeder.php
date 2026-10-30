@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class RoleSeeder extends Seeder
 {
@@ -19,11 +20,12 @@ class RoleSeeder extends Seeder
          foreach ($roles as $role) {
             Role::create([
                 'name' => $role,
-                'slug' => strtolower($role),
+                'slug' => Str::slug($role),
             ]);
         }
     }
 }
+
 //php artisan db:seed --class=RoleSeeder
 
 
