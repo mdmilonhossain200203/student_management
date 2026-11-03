@@ -55,7 +55,7 @@
                 <div class="container py-4">
                 
 
-                    {{ $milon }}
+                    
                 </div>
             </header>
       

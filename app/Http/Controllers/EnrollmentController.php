@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEnrollmentRequest;
 use App\Http\Requests\UpdateEnrollmentRequest;
-use App\Models\Course;
 use App\Models\Enrollment;
-use App\Models\User;
+
 
 class EnrollmentController extends Controller
 {
@@ -22,9 +21,9 @@ class EnrollmentController extends Controller
         //  $courses = Course::where('id','1')->first();
         //  dd($courses);
 
-        $Enrollment = Enrollment::with('user', 'course')->get();
-        dd($Enrollment);
-        return view('customview/enrollment.index');
+        $Enrollment = Enrollment::with('studentUser', 'course')->paginate('5');
+       // dd($Enrollment);
+        return view('customview/enrollment.index',compact('Enrollment'));
     }
 
     /**
