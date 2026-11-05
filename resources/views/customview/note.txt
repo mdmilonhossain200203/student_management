@@ -10,3 +10,11 @@
 2026_10_27_104659_create_course_teachers_table
 2026_10_29_121800_create_course_student_table
 
+
+
+composer require stripe/stripe-php
+
+Publishable key: pk_test_51UX42wA8vN72gHlvaZA9klCRv0rqswSDVoCKTvwJ4spR17d0NqHVXduR8rGOO2Zu9Izj4gyYY5wb0qxALVKFESiu00Yte3DHUb
+
+
+Secret key: sk_test_51UX42wA8vN72gHlvzGtHDjRrjftBfyLrIHF9CptvZBxcppg7f1EqSF27uWs1UHehGcxo08OrjN2kvfFxVSzzYHmT00LBgJ49qC

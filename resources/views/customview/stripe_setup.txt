@@ -1,0 +1,105 @@
+Laravel 12-এ Stripe ইন্টিগ্রেশন (Setup) করার সহজ ও ধাপে ধাপে গাইড নিচে দেওয়া হলো। আপনি চাইলে এই গাইডটি অনুসরণ করতে পারেন অথবা অফিসিয়াল ডকুমেন্টেশন দেখতে পারেন।
+
+ধাপ ১: প্রজেক্ট তৈরি ও Stripe SDK ইনস্টল করা
+
+প্রথমে আপনার টার্মিনালে Laravel 12 প্রজেক্ট তৈরি করুন (যদি আগে না থাকে) এবং অফিশিয়াল Stripe PHP SDK ইনস্টল করুন:
+bash
+composer create-project laravel/laravel stripe-integration "^12.0"
+cd stripe-integration
+composer require stripe/stripe-php
+সতর্ক হয়ে কোড ব্যবহার করুন।
+(বিকল্প হিসেবে সাবস্ক্রিপশন বা বিলিংয়ের জন্য Laravel Cashier ব্যবহার করতে পারেন: composer require laravel/cashier)
+
+ধাপ ২: .env ফাইলে API Keys সেট করা
+
+আপনার Stripe ড্যাশবোর্ড থেকে Publishable Key এবং Secret Key নিয়ে .env ফাইলে যুক্ত করুন:
+env
+STRIPE_KEY=pk_test_your_publishable_key_here
+STRIPE_SECRET=sk_test_your_secret_key_here
+সতর্ক হয়ে কোড ব্যবহার করুন।
+
+ধাপ ৩: config/services.php-এ কনফিগারেশন যোগ করা
+
+config/services.php ফাইলে Stripe-এর তথ্য যুক্ত করুন:
+php
+'stripe' => [
+    'key' => env('STRIPE_KEY'),
+    'secret' => env('STRIPE_SECRET'),
+],
+সতর্ক হয়ে কোড ব্যবহার করুন।
+
+ধাপ ৪: কন্ট্রোলার তৈরি করা
+
+পেমেন্ট রিকোয়েস্ট হ্যান্ডেল করার জন্য একটি কন্ট্রোলার তৈরি করুন:
+bash
+php artisan make:controller StripePaymentController
+সতর্ক হয়ে কোড ব্যবহার করুন।
+StripePaymentController.php-এ পেমেন্ট লজিক লিখুন:
+php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+
+class StripePaymentController extends Controller
+{
+    public function checkout()
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'usd',
+                    'product_data' => [
+                        'name' => 'Laravel 12 Product',
+                    ],
+                    'unit_amount' => 1000, // $10.00 (cents-এ হিসাব হয়)
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('stripe.success'),
+            'cancel_url' => route('stripe.cancel'),
+        ]);
+
+        return redirect()->away($session->url);
+    }
+
+    public function success()
+    {
+        return "পেমেন্ট সফলভাবে সম্পন্ন হয়েছে!";
+    }
+
+    public function cancel()
+    {
+        return "পেমেন্ট বাতিল করা হয়েছে।";
+    }
+}
+সতর্ক হয়ে কোড ব্যবহার করুন।
+
+ধাপ ৫: রাউট (Routes) তৈরি করা
+
+routes/web.php ফাইলে নিচের রাউটগুলো যোগ করুন:
+php
+use App\Http\Controllers\StripePaymentController;
+
+Route::get('/stripe/checkout', [StripePaymentController::class, 'checkout'])->name('stripe.checkout');
+Route::get('/stripe/success', [StripePaymentController::class, 'success'])->name('stripe.success');
+Route::get('/stripe/cancel', [StripePaymentController::class, 'cancel'])->name('stripe.cancel');
+সতর্ক হয়ে কোড ব্যবহার করুন।
+
+
+
+========================
+
+
+
+composer require stripe/stripe-php
+
+Publishable key: pk_test_51UX42wA8vN72gHlvaZA9klCRv0rqswSDVoCKTvwJ4spR17d0NqHVXduR8rGOO2Zu9Izj4gyYY5wb0qxALVKFESiu00Yte3DHUb
+
+
+Secret key: sk_test_51UX42wA8vN72gHlvzGtHDjRrjftBfyLrIHF9CptvZBxcppg7f1EqSF27uWs1UHehGcxo08OrjN2kvfFxVSzzYHmT00LBgJ49qC

@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,6 +56,16 @@ Route::put('/user/update/{id}',[UserController::class,'update']);
 // Route::middleware(['student'])->group(
 //     Route::get('/course',[CourseController::class,'index'])
 // );
+
+
+
+//payment route
+
+
+
+Route::get('/stripe/checkout', [StripePaymentController::class, 'checkout'])->name('stripe.checkout');
+Route::get('/stripe/success', [StripePaymentController::class, 'success'])->name('stripe.success');
+Route::get('/stripe/cancel', [StripePaymentController::class, 'cancel'])->name('stripe.cancel');
 
 
 
