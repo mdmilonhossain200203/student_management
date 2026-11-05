@@ -109,6 +109,16 @@
                                     value="{{ $course->id }}"
                                 >
                                 <input 
+                                    name="title" 
+                                    type="hidden" 
+                                    value="{{ $course->title }}"
+                                >
+                                <input 
+                                    name="price" 
+                                    type="hidden" 
+                                    value="{{ $course->price }}"
+                                >
+                                <input 
                                     name="studentId" 
                                     type="hidden" 
                                     value="{{ Auth::user()->id }}"

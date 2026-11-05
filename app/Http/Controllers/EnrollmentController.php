@@ -52,6 +52,10 @@ class EnrollmentController extends Controller
         ]);
 
         $enrollment->studentUser()->syncWithoutDetaching($request->studentId);
+
+        return redirect()->route('stripe.checkout', ['amount' => $request->courseId]);
+
+        // return redirect()->route('')
     }
 
     /**
@@ -73,9 +77,17 @@ class EnrollmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEnrollmentRequest $request, Enrollment $enrollment)
+    public function update(UpdateEnrollmentRequest $request, Enrollment $enrollment, $id)
     {
         //
+
+        $status=Enrollment::findOrFail($id);
+        dd($id);
+        $status->update([
+
+            'ayment_status'=>'active'
+
+        ]);
     }
 
     /**

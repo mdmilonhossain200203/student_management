@@ -2,43 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\EnrollmentController;
+use App\Models\Course;
 use Illuminate\Http\Request;
-use Stripe\Stripe;
+use Illuminate\Support\Facades\Http;
 use Stripe\Checkout\Session;
+use Stripe\Stripe;
+
 
 class StripePaymentController extends Controller
 {
-    public function checkout()
+
+    public function checkout($mony)
     {
+        $course=Course::with('user')->findOrFail($mony);
+       // dd($course->title);
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = Session::create([
-            // payment_method_types লাইনটি এখান থেকে ফেলে দেওয়া হয়েছে
+            // payment_method_types 
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'usd',
                     'product_data' => [
-                        'name' => 'Laravel 12 Product',
+                        'name' => $course->title,
                     ],
-                    'unit_amount' => 100, // $10.00 (cents)
+                    'unit_amount' => $course->price, // $10.00 (cents)
                 ],
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => route('stripe.success'), // আপনার প্রজেক্টের সাকসেস ইউআরএল দিন
-            'cancel_url' => route('stripe.cancel'),   // আপনার প্রজেক্টের ক্যান্সেল ইউআরএল দিন
+            'success_url' => route('stripe.success'), 
+            'cancel_url' => route('stripe.cancel'),   
         ]);
-    
+
         return redirect()->away($session->url);
     }
 
-    public function success()
+    public function success($id)
     {
-        return "পেমেন্ট সফলভাবে সম্পন্ন হয়েছে!";
+
+        
+        // return "your payment success !";
+        //
+       
+        // return redirect()->route('enrollment.update', ['id' => $id]);
+
+        
+
     }
+
+
 
     public function cancel()
     {
-        return "পেমেন্ট বাতিল করা হয়েছে।";
+        return "your pamyment is canceled !";
     }
 }

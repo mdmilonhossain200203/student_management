@@ -31,6 +31,8 @@ Route::get('/course/show/{slug}',[CourseController::class,'show']);
 Route::get('/enrollment',[EnrollmentController::class,'index']);
 Route::get('/enrollment/create',[EnrollmentController::class,'create']);
 Route::post('/enrollment/store',[EnrollmentController::class,'store']);
+Route::put('/enrollment/update/{id}',[EnrollmentController::class,'update'])->name('enrollment.update');
+
 
 Route::get('/student',[StudentController::class,'index']);
 
@@ -63,7 +65,7 @@ Route::put('/user/update/{id}',[UserController::class,'update']);
 
 
 
-Route::get('/stripe/checkout', [StripePaymentController::class, 'checkout'])->name('stripe.checkout');
+Route::get('/stripe/checkout/{amount}', [StripePaymentController::class, 'checkout'])->name('stripe.checkout');
 Route::get('/stripe/success', [StripePaymentController::class, 'success'])->name('stripe.success');
 Route::get('/stripe/cancel', [StripePaymentController::class, 'cancel'])->name('stripe.cancel');
 
