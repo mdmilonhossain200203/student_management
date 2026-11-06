@@ -16,13 +16,19 @@
 
                     {{-- Course Image --}}
                     <div class="col-md-5 bg-light">
-                        <div class="h-100">
-                            <img 
+                        <div class="h-100 border-2 border-success border-opacity-25">
+                            {{-- <img 
                                 src="{{ $course->thumbnail }}" 
                                 alt="{{ $course->title }}_img"
                                 class="img-fluid w-100 h-100"
                                 style="object-fit: cover; min-height: 400px;"
-                            >
+                            > --}}
+
+
+                            <img src="{{ asset($course->thumbnail) }}"
+                            class="card-img-top h-100 object-cover"
+                            alt="{{ $course->title }}"
+                            style="height: 210px; object-fit: cover;">
                         </div>
                     </div>
 

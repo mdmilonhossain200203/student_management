@@ -15,7 +15,7 @@
                 <!-- title, description, price, duration, assigned teacher,
                 thumbnail image, and status (active/inactive) -->
             </p>
-            <form class="form"  action="{{ url('course/store') }}" method='POST'>
+            <form class="form"  action="{{ url('course/store') }}" method='POST' enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-field">

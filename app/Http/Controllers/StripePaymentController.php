@@ -20,7 +20,9 @@ class StripePaymentController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = Session::create([
+
             // payment_method_types 
+
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'usd',
@@ -39,6 +41,7 @@ class StripePaymentController extends Controller
         return redirect()->away($session->url);
     }
 
+
     public function success($id)
     {
 
@@ -51,7 +54,6 @@ class StripePaymentController extends Controller
         
 
     }
-
 
 
     public function cancel()

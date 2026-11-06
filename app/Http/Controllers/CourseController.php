@@ -52,13 +52,40 @@ class CourseController extends Controller
 
         //dd($request->teacher);
 
+
+
+
+    //    if( file_exists($request->thumbnail)){
+    //     dd("uploatd image");
+    //    }
+
+
+
+       $filename = null;
+
+       if ($request->hasFile('thumbnail')) {
+           $file = $request->file('thumbnail');
+
+           $newFilename = time() . '_' . $file->getClientOriginalName();
+           $file->move(public_path('photos'), $newFilename);
+
+           $filename = 'photos/' . $newFilename;
+        // dd($filename);
+       } 
+    //    else {
+    //         $filename = $student->photos;
+    //    }
+
+
+
+
         $course = Course::create([
             'title' => $request->courseTitle,
             'slug' => Str::slug($request->courseTitle),
             'description' => $request->description,
             'price' => $request->price,
             'duration' => $request->duration,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' =>$filename,
             'status' => $request->status,
         ]);
 
